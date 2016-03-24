@@ -21,17 +21,19 @@ describe('CommentBox', () => {
   });
 
   describe('entering some text', () => {
-    beforeEach(()=>{
+    beforeEach(() => {
       element.find('textarea').simulate('change', 'Dude! It works!');
     });
 
     it('shows text in the textarea', () => {
-      expect(element.find('textarea').to.have.value('Dude! It works!'));
-    })
+      expect(element.find('textarea')).to.have.value('Dude! It works!');
+    });
 
     it('when submitted, clears the input', () => {
-      expect(element.find('textarea').to.have.value(''));
-    })
+      console.log(element);
+      element.simulate('submit');
+      expect(element.find('textarea')).to.have.value('');
+    });
 
 
   });

@@ -11,14 +11,21 @@ export default class CommentBox extends Component {
     this.setState({ comment: event.target.value });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({comment: ''});
+  }
+
   render () {
     return (
-      <div className='comment-box'>
-        <textarea
-          value={this.state.comment}
-          onChange={this.onHandleChange.bind(this)} />
-        <button> Submit Comment </button>
-      </div>
+      <form
+        onSubmit={this.handleSubmit.bind(this)}
+        className='comment-box'>
+          <textarea
+            value={this.state.comment}
+            onChange={this.handleChange.bind(this)} />
+          <button action="submit"> Submit Comment </button>
+      </form>
     );
   }
 }
